@@ -19,16 +19,14 @@ public class solicitacaoController {
     private ClienteRepository clienteRepository;
 
     @GetMapping
-    public List<SolicitacaoDto> getTodasAsSolicitacoesOuFiltraPeloCpfDoCliente(String cpf) {
-
+    public List<SolicitacaoDto> getTodasAsSolicitacoesOuFiltraPeloIDDoCliente(String id) {
         List<Cliente> clientes = new ArrayList<>();
         List<Solicitacao> solicitacoes = new ArrayList<>();
-
-        if (cpf == null) {
+        if (id == null) {
             clientes = clienteRepository.findAll();
         }
         else{
-            clientes = clienteRepository.findByCpf(cpf);
+            clientes = clienteRepository.findByid(Long.parseLong(id));
         }
 
         for (Cliente cliente : clientes) {
@@ -36,8 +34,7 @@ public class solicitacaoController {
             solicitacoes.add(solicitacao);
         }
 
-        return SolicitacaoDto.convert(solicitacoes);
-
+            return SolicitacaoDto.convert(solicitacoes);
 
     }
 }

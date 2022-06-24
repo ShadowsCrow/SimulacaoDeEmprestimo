@@ -21,11 +21,12 @@ public class clienteController {
     private ClienteRepository clienteRepository;
 
     @GetMapping
-    public List<ClienteDto> getTodosClientesOuFiltraPorCpf(String cpf) {
-            if (cpf == null) {
+    public List<ClienteDto> getTodosClientesOuFiltraPorid(String id) {
+            if (id == null) {
                 return ClienteDto.convert(clienteRepository.findAll());
             }
-            return ClienteDto.convert(clienteRepository.findByCpf(cpf));
+
+            return (List<ClienteDto>) ClienteDto.convert(clienteRepository.findByid(Long.parseLong(id)));
 
     }
 
