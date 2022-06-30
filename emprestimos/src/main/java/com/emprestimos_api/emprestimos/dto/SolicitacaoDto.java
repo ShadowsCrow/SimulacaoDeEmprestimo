@@ -30,8 +30,4 @@ public class SolicitacaoDto {
     public static List<SolicitacaoDto> convert(List<Solicitacao> solicitacao) {
         return solicitacao.stream().map(SolicitacaoDto::new).collect(Collectors.toList());
     }
-    
-    public static SolicitacaoDto convert(Solicitacao solicitacao) {
-        return new SolicitacaoDto(solicitacao);
-    }
 }

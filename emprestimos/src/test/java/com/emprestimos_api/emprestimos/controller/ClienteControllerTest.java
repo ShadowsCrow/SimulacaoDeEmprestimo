@@ -9,11 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.net.URI;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,13 +23,6 @@ public class ClienteControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void ClienteControllerTesteDoGetAll() throws Exception {
-        mockMvc.perform(get("/clientes"))
-                .andExpect(status().isOk());
-    }
-
-
-    @Test
     public void deveriaDevolver400CasoNaoPasseNaValidacaoDoPost() throws Exception {
         URI uri = new URI("/clientes");
         String json = "{\"name\":\"Cliente Teste\",\"age\":20,\"uf\":\"SP\",\"renda_mensal\":1000.00}";
@@ -39,7 +31,7 @@ public class ClienteControllerTest {
                         .post(uri)
                         .content(json)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is(400));
+            .andExpect(MockMvcResultMatchers.status().is(400));
     }
 
 }

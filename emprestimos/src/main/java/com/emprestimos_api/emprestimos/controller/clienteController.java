@@ -20,13 +20,13 @@ public class clienteController {
     @Autowired
     private ClienteRepository clienteRepository;
 
+
     @GetMapping
     public List<ClienteDto> getTodosClientesOuFiltraPorid(String id) {
             if (id == null) {
                 return ClienteDto.convert(clienteRepository.findAll());
             }
-
-            return (List<ClienteDto>) ClienteDto.convert(clienteRepository.findByid(Long.parseLong(id)));
+            return ClienteDto.convert(clienteRepository.findByid(Long.parseLong(id)));
 
     }
 

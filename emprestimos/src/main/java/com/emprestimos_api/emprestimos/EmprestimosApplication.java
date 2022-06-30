@@ -10,6 +10,4 @@ public class EmprestimosApplication {
 		SpringApplication.run(EmprestimosApplication.class, args);
 	}
 
-
-
 }

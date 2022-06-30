@@ -1,8 +1,5 @@
 package com.emprestimos_api.emprestimos.dto;
 
-import lombok.Data;
-
-@Data
 public class ErroDeFormularioDto {
 
     private String campo;
@@ -14,4 +11,11 @@ public class ErroDeFormularioDto {
         this.mensagem = mensagem;
     }
 
+    public String getCampo() {
+        return campo;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
 }

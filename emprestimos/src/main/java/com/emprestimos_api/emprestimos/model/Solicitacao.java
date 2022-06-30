@@ -4,7 +4,7 @@ import com.emprestimos_api.emprestimos.model.modalidadesDeEmprestimos.Emprestimo
 import com.emprestimos_api.emprestimos.model.modalidadesDeEmprestimos.EmprestimoPessoal;
 import com.emprestimos_api.emprestimos.interfaces.IEmprestimo;
 import com.emprestimos_api.emprestimos.model.modalidadesDeEmprestimos.EmprestimoConsignado;
-import com.emprestimos_api.emprestimos.service.GerenciadorDeModalidadeDeEmprestimoParaClienteService;
+import com.emprestimos_api.emprestimos.service.GerenciadorDeModalidadeDeEmprestimoParaCliente;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -27,11 +27,9 @@ public class Solicitacao {
 
     public void executaValidacaoDeClienteParaCadaTipoEmprestimoListado() {
 
-        List<IEmprestimo> emprestimosPossiveis = List.of(new EmprestimoPessoal("Emprestimo Pessoal", 4), new EmprestimoConsignado("Emprestimo Consignado", 2), new EmprestimoGarantia("Emprestimo Garantia", 3));
-
-        GerenciadorDeModalidadeDeEmprestimoParaClienteService gerenciadorDeModalidadeDeEmprestimo = new GerenciadorDeModalidadeDeEmprestimoParaClienteService(emprestimosPossiveis);
-
-        this.produtosEmprestimo = gerenciadorDeModalidadeDeEmprestimo.validaSeClienteTemAcessoAoEmprestimo(cliente);
+        List<IEmprestimo> emprestimosLista = List.of(new EmprestimoPessoal("Emprestimo Pessoal", 4), new EmprestimoConsignado("Emprestimo Consignado", 2), new EmprestimoGarantia("Emprestimo Garantia", 3));
+        GerenciadorDeModalidadeDeEmprestimoParaCliente gerenciadorDeModalidadeDeEmprestimo = new GerenciadorDeModalidadeDeEmprestimoParaCliente(emprestimosLista);
+        this.produtosEmprestimo = gerenciadorDeModalidadeDeEmprestimo.validaDeClienteAcessoParaEmprestimo(cliente);
 
     }
 }

@@ -4,16 +4,12 @@ import com.emprestimos_api.emprestimos.model.Cliente;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import java.util.List;
 import java.util.stream.Collectors;
 @Data
 public class ClienteDto
 {
     private String name;
-
     private String cpf;
     private int age;
     private String uf;

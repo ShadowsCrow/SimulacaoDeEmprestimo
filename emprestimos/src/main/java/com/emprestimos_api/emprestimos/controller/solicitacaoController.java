@@ -20,8 +20,10 @@ public class solicitacaoController {
 
     @GetMapping
     public List<SolicitacaoDto> getTodasAsSolicitacoesOuFiltraPeloIDDoCliente(String id) {
+
         List<Cliente> clientes = new ArrayList<>();
         List<Solicitacao> solicitacoes = new ArrayList<>();
+
         if (id == null) {
             clientes = clienteRepository.findAll();
         }
@@ -34,7 +36,8 @@ public class solicitacaoController {
             solicitacoes.add(solicitacao);
         }
 
-            return SolicitacaoDto.convert(solicitacoes);
+        return SolicitacaoDto.convert(solicitacoes);
+
 
     }
 }
